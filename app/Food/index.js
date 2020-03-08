@@ -34,7 +34,7 @@ module.exports = function (passport) {
   /* GET all Food or get food by id*/
   router.get('/types', 
     passport.authenticate('jwt', { session: false }),
-    Authorization.roleAuthorization(['user']),
+    Authorization.roleAuthorization(['admin', 'user']),
     FoodController.getFoodType
   );
 

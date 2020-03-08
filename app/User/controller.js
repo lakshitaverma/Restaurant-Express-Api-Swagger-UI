@@ -78,7 +78,7 @@ const login = function (passport) {
         }
         // Provide data since user is not a proper serialized object
         const token = jwt.sign(user.toObject(), 'secret_restaurant_app');
-          
+
         return res.json({
           success: true,
           token,
@@ -86,7 +86,7 @@ const login = function (passport) {
       });
     })(req, res);
   };
-  
+
 };
 
 module.exports = {

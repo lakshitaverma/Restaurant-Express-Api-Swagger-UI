@@ -19,7 +19,6 @@ module.exports = function (app, passport) {
 
   // Order Routes
   app.use('/orders', require('../app/Orders')(passport));
-  
 
   /**
    * Error handling

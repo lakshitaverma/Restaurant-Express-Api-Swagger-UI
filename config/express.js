@@ -21,6 +21,9 @@ var jade = require('jade');
 var config = require('./');
 var pkg = require('../package.json');
 
+var swaggerUi = require('swagger-ui-express');
+var swaggerDocument = require('./swagger.json');
+
 var env = process.env.NODE_ENV || 'development';
 
 /**
@@ -93,6 +96,8 @@ module.exports = function (app) {
       collection : 'sessions'
     })
   }));
+
+  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
   // connect flash for flash messages - should be declared after sessions
   app.use(flash());

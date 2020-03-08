@@ -1,0 +1,534 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Restaurant Express Api Swagger",
+    "description": ""
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/auth/register": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "Create new user in system",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User that we want to create",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New user is created",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "Create new user in system",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User that we want to create",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New user is created",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/auth/users": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get all users in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/auth/{userId}": {
+      "delete": {
+        "summary": "Delete user with given ID",
+        "tags": [
+          "User"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "description": "ID of user that we want to delete",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User is deleted",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/restaurant": {
+      "get": {
+        "tags": [
+          "Restaurant"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "summary": "Get all restaurants in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Restaurant"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Restaurant"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "description": "Create new restaurant in system",
+        "parameters": [
+          {
+            "name": "restaurant",
+            "in": "body",
+            "description": "Restaurant that we want to create",
+            "schema": {
+              "$ref": "#/definitions/Restaurant"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New Restaurant is created",
+            "schema": {
+              "$ref": "#/definitions/Restaurant"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete restaurant with given ID",
+        "tags": [
+          "Restaurant"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "Restaurant that we want to delete",
+            "schema": {
+              "$ref": "#/definitions/Restaurant"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Restaurant is deleted",
+            "schema": {
+              "$ref": "#/definitions/Restaurant"
+            }
+          }
+        }
+      }
+    },
+    "/restaurant/filter": {
+      "get": {
+        "tags": [
+          "Restaurant"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "type",
+            "type": "string",
+            "in": "query",
+            "description": "Get all restaurants by type in system",
+            "schema": {
+              "$ref": "#/definitions/Restaurant"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Restaurant"
+            }
+          }
+        }
+      }
+    },
+    "/restaurant/addFoodToRestaurant": {
+      "post": {
+        "tags": [
+          "Restaurant"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "description": "Add food to restaurant in system",
+        "parameters": [
+          {
+            "name": "add food",
+            "in": "body",
+            "description": "Add Food to Restaurant that we want to create",
+            "schema": {
+              "$ref": "#/definitions/AddFoodToRestaurant"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New Restaurant is created",
+            "schema": {
+              "$ref": "#/definitions/AddFoodToRestaurant"
+            }
+          }
+        }
+      }
+    },
+    "/food": {
+      "get": {
+        "tags": [
+          "Food"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "summary": "Get all foods in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Food"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete food with given ID",
+        "tags": [
+          "Food"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "Food that we want to delete",
+            "schema": {
+              "$ref": "#/definitions/Food"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Food is deleted",
+            "schema": {
+              "$ref": "#/definitions/Food"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Food"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "description": "Create new food in system",
+        "parameters": [
+          {
+            "name": "food",
+            "in": "body",
+            "description": "Food that we want to create",
+            "schema": {
+              "$ref": "#/definitions/Food"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New Food is created",
+            "schema": {
+              "$ref": "#/definitions/Food"
+            }
+          }
+        }
+      }
+    },
+    "/food/{foodId}": {
+      "patch": {
+        "tags": [
+          "Food"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "description": "Update food in system",
+        "parameters": [
+          {
+            "name": "foodId",
+            "in": "path",
+            "description": "Food that we want to update",
+            "schema": {
+              "$ref": "#/definitions/Food"
+            }
+          },
+          {
+            "name": "update food",
+            "in": "body",
+            "description": "Update food in system",
+            "schema": {
+              "$ref": "#/definitions/Food"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New Food is created",
+            "schema": {
+              "$ref": "#/definitions/Food"
+            }
+          }
+        }
+      }
+    },
+    "/food/types": {
+      "get": {
+        "tags": [
+          "Food"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "summary": "Get all food types in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Food"
+            }
+          }
+        }
+      }
+    },
+    "/orders": {
+      "get": {
+        "tags": [
+          "Orders"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [{
+          "name": "userId",
+          "in": "query",
+          "description": "Get all orders by userId in system",
+          "schema": {
+            "$ref": "#/definitions/Orders"
+          }
+        }],
+        "summary": "Get all orders by userId in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Orders"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Food": {
+      "required": [
+        "name",
+        "type"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "Restaurant": {
+      "required": [
+        "name",
+        "details"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "details": {
+          "type": "string"
+        }
+      }
+    },
+    "AddFoodToRestaurant" : {
+      "required": [
+        "restaurantId",
+        "foodId",
+        "price"
+      ],
+      "properties": {
+        "restaurantId": {
+          "type": "string"
+        },
+        "foodId": {
+          "type": "string"
+        },
+        "price": {
+          "type": "number"
+        }
+      }
+    },
+    "User": {
+      "required": [
+        "email",
+        "password"
+      ],
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "Orders": {
+      "required": [
+        "userId",
+        "items",
+        "totalCost"
+      ],
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "items": {
+          "type": "array"
+        },
+        "totalCost": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}
